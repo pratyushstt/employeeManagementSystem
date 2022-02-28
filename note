@@ -1,0 +1,108 @@
+# department-----------------
+->id
+->name
+->status
+->created at
+->updated_at
+->deleted_at
+_________________________________________________
+
+# userType-------------------
+->id
+->name
+->department FK(department.id)
+->status
+->created_at
+->updated_at
+->deleted_at
+_________________________________________________
+
+# users----------------------
+->id
+->name
+->mobile
+->email_personal
+->email_company
+->dob
+->userType FK(userType.id)
+->reportingPerson FK(users.id)
+->status
+->created_at
+->updated_at
+->deleted_at
+_________________________________________________
+
+# leave----------------------
+->id
+->user FK(users.id)
+->startDate
+->endDate
+->reason
+->isAdhoc
+->isApproved
+->status
+->created_at
+->updated_at
+->deleted_at
+_________________________________________________
+
+# projectGroup---------------
+->id
+->groupName
+->members FK(users.id)
+->status
+->created_at
+->updated_at
+->deleted_at
+_________________________________________________
+
+# project--------------------
+->id
+->name
+->allotted_to_group FK(projectGroup.id)
+->allotted_by FK(users.id where department=2|ProjectManager)
+->hoursAllotted
+->status
+->created_at
+->updated_at
+->deleted_at
+_________________________________________________
+
+# tasks----------------------
+->id
+->name
+->timeAllotted
+->startDate
+->endDate
+->user FK(users.id)
+->description
+->project FK(project.id)
+->status
+->created_at
+->updated_at
+->deleted_at
+_________________________________________________
+
+# timeEntry------------------
+->id
+->task FK(tasks.id)
+->timeSpent
+->date
+->status
+->created_at
+->updated_at
+->deleted_at
+
+_________________________________________________
+
+# attendance-----------------
+->id
+->user FK(users.id)
+->date
+->dayStart
+->dayEnd
+->loggedHours
+->status
+->created_at
+->updated_at
+->deleted_at
